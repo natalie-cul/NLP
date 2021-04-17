@@ -78,18 +78,38 @@ for w in words_no_punc:
 fdistNoStopWords = FreqDist(clean_words)
 #print the 10 most common words
 mostCommon10 = fdistNoStopWords.most_common(10)
-for x in mostCommon10:
-    print(x)
+#for x in mostCommon10:
+#    print(x)
 #graph of word distribution without punc
-fdistNoStopWords.plot(10)
+#fdistNoStopWords.plot(10)
 #wordcloud
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 
-wordcloud = WordCloud().generate(text)
+###original wordcloud format
+#wordcloud = WordCloud().generate(text)
+#plt.figure(figsize = (12,12))
+#plt.imshow(wordcloud)
 
-plt.figure(figsize = (12,12))
+#plt.axis("off")
+#plt.show()
+
+##Circle wordcloud format
+import numpy as np
+from PIL import Image
+
+char_mask = np.array(Image.open("circle.png"))
+wordcloud = WordCloud(background_color="black", mask=char_mask).generate(text)
+plt.figure(figsize = (8,8))
 plt.imshow(wordcloud)
 
 plt.axis("off")
 plt.show()
+
+#Stems
+from nltk.stem import PorterStemmer
+
+porter = PorterStemmer()
+word_list = ["banana", "bananas"]
+for w in word_list:
+    print(porter.stem(w))

@@ -55,7 +55,41 @@ for w in words:
 fdistNoPunc = FreqDist(words_no_punc)
 #print the 10 most common words
 mostCommon10 = fdistNoPunc.most_common(10)
+#for x in mostCommon10:
+#    print(x)
+#graph of word distribution without punc
+#fdistNoPunc.plot(10)
+
+##Stopwords
+from nltk.corpus import stopwords
+#run once
+#nltk.download('stopwords')
+stopwords = stopwords.words("english")
+#print(stopwords)
+clean_words = []
+for w in words_no_punc:
+    if w not in stopwords:
+        clean_words.append(w)
+#print(clean_words)
+#print("\n")
+#print(len(clean_words))
+############
+#most common words after removing stopwords
+fdistNoStopWords = FreqDist(clean_words)
+#print the 10 most common words
+mostCommon10 = fdistNoStopWords.most_common(10)
 for x in mostCommon10:
     print(x)
 #graph of word distribution without punc
-fdistNoPunc.plot(10)
+fdistNoStopWords.plot(10)
+#wordcloud
+from wordcloud import WordCloud
+import matplotlib.pyplot as plt
+
+wordcloud = WordCloud().generate(text)
+
+plt.figure(figsize = (12,12))
+plt.imshow(wordcloud)
+
+plt.axis("off")
+plt.show()

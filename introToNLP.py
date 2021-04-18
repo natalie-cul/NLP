@@ -73,6 +73,7 @@ for w in words_no_punc:
 #print(clean_words)
 #print("\n")
 #print(len(clean_words))
+
 ############
 #most common words after removing stopwords
 fdistNoStopWords = FreqDist(clean_words)
@@ -99,7 +100,7 @@ import numpy as np
 from PIL import Image
 
 char_mask = np.array(Image.open("circle.png"))
-wordcloud = WordCloud(background_color="black", mask=char_mask).generate(text)
+wordcloud = WordCloud(background_color="black", normalize_plurals=True,mask=char_mask).generate(text)
 plt.figure(figsize = (8,8))
 plt.imshow(wordcloud)
 

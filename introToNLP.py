@@ -112,5 +112,15 @@ from nltk.stem import PorterStemmer
 
 porter = PorterStemmer()
 word_list = ["banana", "bananas"]
+#for w in word_list:
+#    print(porter.stem(w))
+#run once
+#nltk.download('wordnet')
+
+from nltk import WordNetLemmatizer
+lemma = WordNetLemmatizer()
+#word_list = ["Study", "Studying", "Studies", "Studied"]
+word_list = ["am", "is", "are", "was", "were"]
+#run once
 for w in word_list:
-    print(porter.stem(w))
+    print(lemma.lemmatize(w,pos = "v"))

@@ -121,6 +121,16 @@ from nltk import WordNetLemmatizer
 lemma = WordNetLemmatizer()
 #word_list = ["Study", "Studying", "Studies", "Studied"]
 word_list = ["am", "is", "are", "was", "were"]
-#run once
-for w in word_list:
-    print(lemma.lemmatize(w,pos = "v"))
+#for w in word_list:
+#    print(lemma.lemmatize(w,pos = "v"))
+
+#PoS tagging:
+#run once:
+nltk.download('averaged_perceptron_tagger')
+sentence = "Buuny the cat is being very rude"
+tokenized_words = word_tokenize(sentence)
+
+for words in tokenized_words:
+    tagged_words = nltk.pos_tag(tokenized_words)
+
+print(tagged_words)
